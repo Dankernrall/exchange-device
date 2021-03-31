@@ -20,13 +20,15 @@ public class ExchangeDevice {
         HashMap<Integer, Integer> hashMapWork = new HashMap<>();
         while (dataSet.size() != 0) {
             for (int i : dataSet) {
-                while (moneyWork - i > -1) {
-                    try {
-                        hashMapWork.put(i, hashMapWork.get(i) + 1);
-                    } catch (NullPointerException e) {
-                        hashMapWork.put(i, 1);
+                for (int j : dataSet) {//dodelat
+                    while (moneyWork - i > -1) {
+                        try {
+                            hashMapWork.put(i, hashMapWork.get(i) + 1);
+                        } catch (NullPointerException e) {
+                            hashMapWork.put(i, 1);
+                        }
+                        moneyWork -= i;
                     }
-                    moneyWork -= i;
                 }
             }
             for(int i : hashMapWork.keySet()) {
@@ -35,7 +37,7 @@ public class ExchangeDevice {
                 }
             }
             if (moneyWork == 0) {
-                if (hashMapResult.size() == 0) {
+                if (countMoneyResult == 0) {
                     for(int i : hashMapWork.keySet()) {
                         hashMapResult.put(i, hashMapWork.get(i));
                         countMoneyResult = countMoneyWork;
@@ -57,19 +59,19 @@ public class ExchangeDevice {
             return "Невозможно получить из полученного набора введенное значение.";
         }
 
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for(int i : hashMapResult.keySet()) {
             int count = hashMapResult.get(i)%100;
             if ((count>4 & count<21) | (count%10 > 4)) {
-                output += hashMapResult.get(i) + " монет по " + i + " руб.\n";
+                output.append(hashMapResult.get(i)).append(" монет по ").append(i).append(" руб.\n");
             }
             else if (count%10 == 1){
-                output += hashMapResult.get(i) + " монета по " + i + " руб.\n";
+                output.append(hashMapResult.get(i)).append(" монета по ").append(i).append(" руб.\n");
             }
             else{
-                output += hashMapResult.get(i) + " монеты по " + i + " руб.\n";
+                output.append(hashMapResult.get(i)).append(" монеты по ").append(i).append(" руб.\n");
             }
         }
-        return output;
+        return output.toString();
     }
 }
