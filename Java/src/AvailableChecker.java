@@ -4,13 +4,11 @@ import java.util.List;
 public class AvailableChecker {
     List<Integer> delivery = new ArrayList<>();
     int count;
-    int tmp;
-    int k = 0;
-    int[] test;
+    int tmp; // Храним изначальное количество монет
+    int whatDel = 0; // Переменная для поэтапного удаления чисел массива
 
     public void AvailableChecker(int value, int[] arr) {
         try {
-            test = arr;
             tmp = value;
             for (Integer integer : arr) {
                 if (integer != 0) {
@@ -20,11 +18,11 @@ public class AvailableChecker {
                     value %= integer;
                 }
             }
-            if (value > 0) {
-                test[k] = 0;
-                k++;
-                delivery.clear();
-                AvailableChecker(tmp, test);
+            if (value > 0) { // Если не удалось разменять, то пробуем заново, удаляя
+                arr[whatDel] = 0; // максимальный элемент массива
+                whatDel++;
+                delivery.clear();  // Очищаем неправильный размен
+                AvailableChecker(tmp, arr);
             } else {
                 System.out.println("Выдано монет:\n" + delivery
                         .toString().replace("[", "")
