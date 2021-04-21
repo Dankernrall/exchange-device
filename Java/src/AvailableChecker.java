@@ -7,7 +7,7 @@ public class AvailableChecker {
     int tmp; // Храним изначальное количество монет
     int whatDel = 0; // Переменная для поэтапного удаления чисел массива
 
-    public void AvailableChecker(int value, int[] arr) {
+    public void check(int value, int[] arr) {
         try {
             tmp = value;
             for (Integer integer : arr) {
@@ -22,7 +22,7 @@ public class AvailableChecker {
                 arr[whatDel] = 0; // максимальный элемент массива
                 whatDel++;
                 delivery.clear();  // Очищаем неправильный размен
-                AvailableChecker(tmp, arr);
+                check(tmp, arr);
             } else {
                 System.out.println("Выдано монет:\n" + delivery
                         .toString().replace("[", "")
