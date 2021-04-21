@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AvailableChecker {
-    List<Integer> delivery = new ArrayList<>();
-    int count;
-    int tmp; // Храним изначальное количество монет
-    int whatDel = 0; // Переменная для поэтапного удаления чисел массива
+    private List<Integer> delivery = new ArrayList<>();
+    private int count;
+    private int tmp; // Храним изначальное количество монет
+    private int whatDel = 0; // Переменная для поэтапного удаления чисел массива
 
     public void check(int value, int[] arr) {
         try {
