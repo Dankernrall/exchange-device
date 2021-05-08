@@ -10,7 +10,6 @@ public class ExchangeDevice {
         }
         nums = (TreeSet<Integer>) nums.descendingSet();
     }
-
     public void exchange(int money) {
         int howMuch = 0;
         int moneyResult = Integer.MAX_VALUE;
