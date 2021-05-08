@@ -1,12 +1,9 @@
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args){
-        ExchangeDevice exchangeDevice = new ExchangeDevice(1,5,10,25,100);
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Введите число: ");
-        int count = sc.nextInt();
-        System.out.print(exchangeDevice.exchange(count));
+        ExchangeDevice exchangeDevice = new ExchangeDevice(5,2,3); //Какие монеты доступны для размена
+        //ExchangeDevice exchangeDevice = new ExchangeDevice(3,4); //Для отработки невозможности размена
+        int value = 13; // Для размена
+        exchangeDevice.exchange(value);
     }
 }
